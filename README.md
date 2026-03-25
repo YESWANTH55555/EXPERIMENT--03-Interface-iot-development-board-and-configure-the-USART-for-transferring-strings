@@ -1,12 +1,12 @@
 # EXPERIMENT--03-INTERFACING IOT DEVELOPMENT BOARD AND CONFIGURE USART FOR TRANSFERRING STRINGS 
 
-**DATE:**
+**DATE:25.03.2026**
 
-**NAME:**
+**NAME:PEDDEPI YESWANTH**
 
-**ROLL NO:**
+**ROLL NO:212224040234**
 
-**DEPARTMENT:**
+**DEPARTMENT: BE/CSE**
 
 ## Aim:
 
@@ -31,14 +31,17 @@ UART transmits and receives data asynchronously, meaning there is no shared cloc
 
 1. Click on STM 32 CUBE IDE, the following screen will appear
    
- ![image](https://user-images.githubusercontent.com/36288975/226189166-ac10578c-c059-40e7-8b80-9f84f64bf088.png)
+<img width="1139" height="610" alt="image" src="https://github.com/user-attachments/assets/e8c8e0af-9b10-4f6f-ac5a-7b3a4cea895c" />
+
 
 
 2. Click on FILE, click on new stm 32 project
    
-![image](https://user-images.githubusercontent.com/36288975/226189215-2d13ebfb-507f-44fc-b772-02232e97c0e3.png)
+<img width="1143" height="612" alt="image" src="https://github.com/user-attachments/assets/6fede369-5fc8-4344-9295-b8ccc5f17a63" />
 
-![image](https://user-images.githubusercontent.com/36288975/226189230-bf2d90dd-9695-4aaf-b2a6-6d66454e81fc.png)
+
+<img width="1142" height="611" alt="image" src="https://github.com/user-attachments/assets/6d7cdc44-a68d-46f4-b444-0a929f5eb7ad" />
+
 
 3. Select the target to be programmed as shown below and click on next
    
@@ -65,12 +68,14 @@ UART transmits and receives data asynchronously, meaning there is no shared cloc
 
 8. Edit the program and as per required 
 
-![image](https://user-images.githubusercontent.com/36288975/226189461-a573e62f-a109-4631-a250-a20925758fe0.png)
+<img width="1140" height="614" alt="image" src="https://github.com/user-attachments/assets/c5c28fca-9d20-4eae-ba31-6cbd68a8c64f" />
+
 
 
 9. Use project and build all 
 
-![image](https://user-images.githubusercontent.com/36288975/226189554-3f7101ac-3f41-48fc-abc7-480bd6218dec.png)
+<img width="1141" height="612" alt="image" src="https://github.com/user-attachments/assets/c6b43d15-51ee-47d4-8d0e-9d1fed8b4543" />
+
 
 10. Once the project is bulild 
 
@@ -90,13 +95,41 @@ UART transmits and receives data asynchronously, meaning there is no shared cloc
 
 
 ## STM 32 CUBE PROGRAM :
-
+```c
+#include "main.h"
+#include "stdio.h"
+#if defined(_GNUC_)
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif
+UART_HandleTypeDef huart2;
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  while (1)
+  {
+	  	  printf("SANJEV R M\n");
+	  	  printf("212223040186\n");
+	  	  HAL_Delay(2000);
+  }
+}
+PUTCHAR_PROTOTYPE
+{
+	HAL_UART_Transmit(&huart2,(uint8_t *)&ch,1,0xFFFF);
+	return ch;
+}
+```
 
 
 ## Output screen shots of Serial port utility   :
- 
- 
- 
- 
+
+ ![unnamed](https://github.com/user-attachments/assets/301c75ca-84e8-495e-9bf9-069d64dd1c0d)
+
+
 ## Result :
 The IoT development board was successfully interfaced, and the USART was configured to transmit strings. The transmitted data was verified using a serial monitor, confirming proper communication.
